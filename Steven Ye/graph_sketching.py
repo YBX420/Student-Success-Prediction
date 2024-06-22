@@ -88,4 +88,4 @@ def n_feature_PI():
     plt.grid(True)
     plt.show()
 
-n_feature_PI()
+n_feature_accuracy()
