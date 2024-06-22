@@ -25,7 +25,7 @@ weights = {
     'Norm Validation accuracy': 0.1,
     'Norm Test accuracy': 0.1,
     'Norm Train accuracy': 0.8,
-    'Norm General accuracy': 1,
+    'Norm General accuracy': 0,
     'Norm Time rfe': -0.5,  # 时间指标的权重为负，因为时间越少越好
     'Norm Time train': -0.5,
     'Norm Time total': 0

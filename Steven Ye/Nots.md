@@ -34,20 +34,18 @@ confusion matrix (画一个)
 
 
 
-我对数据做了什么来防止over fit （大章） k-fold
+我对数据做了什么来防止over fit （大章）
 
 feature select -rfe （筛选掉ml认为不相关的）
 
 results test sets
 
-![image-20240622154557557](C:\Users\29505\AppData\Roaming\Typora\typora-user-images\image-20240622154557557.png)
 
 
 
 
 
-### Random forest:
-
+Random forest Result:
 TRAIN
 Accuracy: 0.8640858999717435
 Precision: 0.8650323377116125
@@ -61,70 +59,19 @@ Accuracy: 0.7584650112866818
 Precision: 0.7505067912737355
 Recall: 0.7584650112866818
 
-### Random forest with optimisted data:
-
-Best parameters found:  {'max_depth': 20, 'min_impurity_decrease': 0.0, 'min_samples_split': 0.01, 'n_estimators': 80}
-Best estimators found:  RandomForestClassifier(max_depth=20, min_samples_split=0.01, n_estimators=80,
-                       random_state=0)
-
-TRAIN
-
-Accuracy: 0.8671941226335123
-Precision: 0.8688400939965787
-Recall: 0.8671941226335123
+Xgboost Result:
+TRAIN:
+Accuracy: 0.9994348686069511
+Precision: 0.999435668509843
+Recall: 0.9994348686069511
 VALIDATION
-Accuracy: 0.8076923076923077
-Precision: 0.8070247023444875
-Recall: 0.8076923076923077
+Accuracy: 0.8280542986425339
+Precision: 0.8249608667908688
+Recall: 0.8280542986425339
 TEST
-Accuracy: 0.7720090293453724
-Precision: 0.767241807764636
-Recall: 0.7720090293453724
-
-### Random forest with optimisted data and rfe:
-
-rfe = 35 -> 20, step = 3
-
-TRAIN
-Accuracy: 1.0
-Precision: 1.0
-Recall: 1.0
-VALIDATION
-Accuracy: 0.832579185520362
-Precision: 0.8296124127345534
-Recall: 0.832579185520362
-TEST
-Accuracy: 0.7945823927765236
-Precision: 0.7886728165640592
-Recall: 0.7945823927765236
-Total runtime of the script: 27.8073947429657 seconds
-
-rfe = 35 -> 25
-
-TRAIN
-Accuracy: 1.0
-Precision: 1.0
-Recall: 1.0
-VALIDATION
-Accuracy: 0.8371040723981901
-Precision: 0.8345101354151128
-Recall: 0.8371040723981901
-TEST
-Accuracy: 0.7990970654627539
-Precision: 0.7932993741448892
-Recall: 0.7990970654627539
-
-
-
-Xgboost:
-
-Train time:
-
-1971.6269881725311 seconds
-
-
-
-
+Accuracy: 0.801354401805869
+Precision: 0.79534809303784
+Recall: 0.801354401805869
 
 做一个纯随机猜
 

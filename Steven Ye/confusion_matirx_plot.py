@@ -50,11 +50,12 @@ y_pred = best_model.predict(X_test)
 # 生成混淆矩阵
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
-
+n = 10
 # 使用seaborn绘制混淆矩阵
 plt.figure(figsize=(10, 7))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
 plt.title('Confusion Matrix')
-plt.show()
+output_directory = f'confusion_matrix_{n}.png'
+plt.savefig(output_directory)

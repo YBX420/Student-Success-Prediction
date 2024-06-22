@@ -37,8 +37,10 @@ X_test = scaler.transform(X_test)
 
 # 使用GridSearchCV寻找最优参数
 param_grid = {
-    'n_estimators': [100, 200, 500, 1000],  # Number of trees in the forest
-    'max_depth': [None, 10, 30, 50, 100]  # Maximum depth of the trees
+    'n_estimators': [100, 200, 500, 1000],  # 树的数量
+    'max_depth': [None, 10, 30, 50, 100],  # 树的最大深度
+    'min_impurity_decrease': [0.0, 0.01, 0.05, 0.1],  # 最小不纯度减少
+    'min_samples_split': [2, 5, 10, 20]  # 最小样本分裂数
 }
 
 
