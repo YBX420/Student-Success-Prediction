@@ -41,7 +41,7 @@ def classify_un(un):
 def classify_ot(ot):
     if ot == 'Dropout':
         return '-1'
-    elif ot == 'Enrolled':
+    elif ot == 'Graduate':
         return '0'
     else:
         return '1'
