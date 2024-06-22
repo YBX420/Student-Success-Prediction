@@ -1,0 +1,131 @@
+The n_feature testing is 35
+Best parameters found: {'rf__max_depth': None, 'rf__n_estimators': 1000}
+Best cross-validation score: 0.8036211008146477
+TRAIN
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+VALIDATION
+Accuracy: 0.8371040723981901
+Precision: 0.8345101354151128
+Recall: 0.8371040723981901
+TEST
+Accuracy: 0.7968397291196389
+Precision: 0.7907335394654476
+Recall: 0.7968397291196389
+Total runtime of the script: 62.44744300842285 seconds
+Total runtime of the rfe: 6.895842790603638 seconds
+Total runtime of the train: 55.551600217819214 seconds
+
+The n_feature testing is 30
+Best parameters found: {'rf__max_depth': 30, 'rf__n_estimators': 200}
+Best cross-validation score: 0.8075735023447128
+TRAIN
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+VALIDATION
+Accuracy: 0.8144796380090498
+Precision: 0.8105425241648153
+Recall: 0.8144796380090498
+TEST
+Accuracy: 0.7968397291196389
+Precision: 0.7909519135489829
+Recall: 0.7968397291196389
+Total runtime of the script: 84.05005025863647 seconds
+Total runtime of the rfe: 41.83101725578308 seconds
+Total runtime of the train: 42.219033002853394 seconds
+
+The n_feature testing is 25
+Best parameters found: {'rf__max_depth': None, 'rf__n_estimators': 500}
+Best cross-validation score: 0.8067252444743203
+TRAIN
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+VALIDATION
+Accuracy: 0.830316742081448
+Precision: 0.8278377534328744
+Recall: 0.830316742081448
+TEST
+Accuracy: 0.7945823927765236
+Precision: 0.7882191900462218
+Recall: 0.7945823927765236
+Total runtime of the script: 128.19247722625732 seconds
+Total runtime of the rfe: 80.5567057132721 seconds
+Total runtime of the train: 47.63577151298523 seconds
+
+The n_feature testing is 20
+Best parameters found: {'rf__max_depth': 30, 'rf__n_estimators': 1000}
+Best cross-validation score: 0.8024847553656311
+TRAIN
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+VALIDATION
+Accuracy: 0.8371040723981901
+Precision: 0.8345101354151128
+Recall: 0.8371040723981901
+TEST
+Accuracy: 0.7990970654627539
+Precision: 0.7932993741448892
+Recall: 0.7990970654627539
+Total runtime of the script: 167.37868309020996 seconds
+Total runtime of the rfe: 114.92307639122009 seconds
+Total runtime of the train: 52.45560669898987 seconds
+
+The n_feature testing is 15
+Best parameters found: {'rf__max_depth': 30, 'rf__n_estimators': 1000}
+Best cross-validation score: 0.7863710568012676
+TRAIN
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+VALIDATION
+Accuracy: 0.8371040723981901
+Precision: 0.8345101354151128
+Recall: 0.8371040723981901
+TEST
+Accuracy: 0.7990970654627539
+Precision: 0.7932993741448892
+Recall: 0.7990970654627539
+Total runtime of the script: 201.08958196640015 seconds
+Total runtime of the rfe: 149.65508437156677 seconds
+Total runtime of the train: 51.434497594833374 seconds
+
+The n_feature testing is 10
+Best parameters found: {'rf__max_depth': None, 'rf__n_estimators': 1000}
+Best cross-validation score: 0.7637721867447704
+TRAIN
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+VALIDATION
+Accuracy: 0.8371040723981901
+Precision: 0.8345101354151128
+Recall: 0.8371040723981901
+TEST
+Accuracy: 0.7968397291196389
+Precision: 0.7907335394654476
+Recall: 0.7968397291196389
+Total runtime of the script: 233.98231863975525 seconds
+Total runtime of the rfe: 181.76130843162537 seconds
+Total runtime of the train: 52.22101020812988 seconds
+The n_feature testing is 5
+Best parameters found: {'rf__max_depth': 10, 'rf__n_estimators': 100}
+Best cross-validation score: 0.6815447896160431
+TRAIN
+Accuracy: 0.8934727324102854
+Precision: 0.9002990222434076
+Recall: 0.8934727324102854
+VALIDATION
+Accuracy: 0.8076923076923077
+Precision: 0.8111120508591647
+Recall: 0.8076923076923077
+TEST
+Accuracy: 0.7629796839729119
+Precision: 0.7584250003217512
+Recall: 0.7629796839729119
+Total runtime of the script: 260.49141478538513 seconds
+Total runtime of the rfe: 223.54450678825378 seconds
+Total runtime of the train: 36.94690799713135 seconds

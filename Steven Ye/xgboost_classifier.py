@@ -9,7 +9,7 @@ from sklearn.metrics import precision_score, recall_score, accuracy_score
 
 start_time = time.time()
 
-file_path = 'student_data_classified.csv'
+file_path = '../student_data_classified.csv'
 data = pd.read_csv(file_path, delimiter=',')
 
 # 确认数据列名
@@ -17,7 +17,7 @@ print("Available columns:", data.columns.tolist())
 
 # 假设你的数据集中需要预测的目标列是 'GDP_Class'
 # 丢弃 'GDP_Class' 列作为特征集，'GDP_Class' 作为目标变量
-data = data.drop(columns=['GDP', 'Unemployment rate', 'Output'])
+data = data.drop(columns=['GDP', 'Unemployment rate', 'Output','GDP_random'])
 X = data.drop(['GDP_class'], axis=1)
 y = data['GDP_class']
 
@@ -41,21 +41,21 @@ X_test = scaler.transform(X_test)
 # 定义XGBoost的参数网格
 param_grid = {
     'n_estimators': [100, 200, 500, 1000],  # Number of gradient boosted trees
-    'max_depth': [10, 30, 50, 100, 200],  # Depth of each tree
+    'max_depth': [None, 10, 30, 50, 100],  # Depth of each tree
     'learning_rate': [0.01, 0.1, 0.2],  # Step size shrinkage used to prevent overfitting
     'subsample': [0.5, 0.75, 1],  # Subsample ratio of the training instances
     'colsample_bytree': [0.5, 0.75, 1],  # Subsample ratio of columns when constructing each tree
 }
-#xgb_clf = XGBClassifier(eval_metric='mlogloss', random_state=42)
+xgb_clf = XGBClassifier(eval_metric='mlogloss', random_state=42)
 # 使用GridSearchCV进行超参数调优
-#grid_search = GridSearchCV(estimator=xgb_clf, param_grid=param_grid, cv=10, scoring='accuracy', verbose=3, n_jobs=-1)
+grid_search = GridSearchCV(estimator=xgb_clf, param_grid=param_grid, cv=10, scoring='accuracy', verbose=3, n_jobs=-1)
 
 # 在训练数据上拟合模型
-#grid_search.fit(X_train, y_train)
+grid_search.fit(X_train, y_train)
 
 # 输出最佳参数和最佳得分
-#print("Best parameters found:", grid_search.best_params_)
-#print("Best cross-validation score:", grid_search.best_score_)
+print("Best parameters found:", grid_search.best_params_)
+print("Best cross-validation score:", grid_search.best_score_)
 
 
 params_best = {'colsample_bytree': 0.5, 'learning_rate': 0.01, 'max_depth': 10, 'n_estimators': 1000, 'subsample': 1}

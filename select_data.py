@@ -38,13 +38,23 @@ def classify_un(un):
     else:
         return '1'
 
-def classify_ot(ot):
+def classify_drop(ot):
     if ot == 'Dropout':
-        return '-1'
-    elif ot == 'Graduate':
-        return '0'
-    else:
         return '1'
+    else:
+        return '0'
+    
+def classify_gra(ot):
+    if ot == 'Graduate':
+        return '1'
+    else:
+        return '0'
+
+def classify_enroll(ot):
+    if ot == 'Enrolled':
+        return '1'
+    else:
+        return '0' 
 
 def classify_random(ran):
     return random.randint(-1,1)
@@ -53,7 +63,9 @@ def classify_random(ran):
 
 data['Unemployment rate_class'] = data[unemployment].apply(classify_un)
 data['GDP_class'] = data[gdp_column].apply(classify_gdp)
-data['Output_class'] = data[unemployment].apply(classify_ot)
+data['Graduated_class'] = data['Output'].apply(classify_gra)
+data['Dropout_class'] = data['Output'].apply(classify_drop)
+data['Enrolled_class'] = data['Output'].apply(classify_enroll)
 data['GDP_random'] = data[gdp_column].apply(classify_random)
 data = data.drop(columns=['Inflation rate'])
 

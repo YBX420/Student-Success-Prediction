@@ -10,17 +10,14 @@ import graphviz
 from tqdm import tqdm
 
 # 读取数据
-file_path = 'student_data_classified.csv'
+file_path = '../student_data_classified.csv'
 data = pd.read_csv(file_path, delimiter=',')
 
 # 确认数据列名
 print("Available columns:", data.columns.tolist())
 
-# 假设你的数据集中需要预测的目标列是 'GDP_Class'
-# 丢弃 'GDP_Class' 列作为特征集，'GDP_Class' 作为目标变量
-data = data.drop(columns=['GDP'])
-data = data.drop(columns=['Unemployment rate'])
-data = data.drop(columns=['Output'])
+# drop the three orignal data and remains the selected ones.
+data = data.drop(columns=['GDP', 'Unemployment rate', 'Output','GDP_random'])
 X = data.drop(['GDP_class'], axis=1)
 y = data['GDP_class']
 
@@ -46,19 +43,19 @@ param_grid = {
     'min_impurity_decrease': np.linspace(0.0, 1.0, 10)
 }
 
-"""
+
 rfc = RandomForestClassifier(random_state=0)
 grid_search = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=10)
 grid_search.fit(X_train, y_train)
 
 # 输出最佳参数
 print("Best parameters found: ", grid_search.best_params_)
-"""
+
 
 # 使用最佳参数训练模型
-#print("Best estimators found: ", grid_search.best_estimator_)
+print("Best estimators found: ", grid_search.best_estimator_)
 
-best_model = RandomForestClassifier(random_state=0,max_depth= 18, min_impurity_decrease= 0.0, min_samples_split = 0.01, n_estimators = 80)
+best_model = RandomForestClassifier(**grid_search.best_params_)
 best_model.fit(X_train, y_train)
 
 # 评估模型
