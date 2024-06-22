@@ -37,15 +37,13 @@ X_test = scaler.transform(X_test)
 
 # 使用GridSearchCV寻找最优参数
 param_grid = {
-    'max_depth': range(1, 30),
-    'min_samples_split': np.linspace(0.01, 1.0, 10, endpoint=True),
-    'n_estimators': range(10, 100, 10),
-    'min_impurity_decrease': np.linspace(0.0, 1.0, 10)
+    'n_estimators': [100, 200, 500, 1000],  # Number of trees in the forest
+    'max_depth': [None, 10, 30, 50, 100]  # Maximum depth of the trees
 }
 
 
 rfc = RandomForestClassifier(random_state=0)
-grid_search = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=10)
+grid_search = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=10, scoring='accuracy', n_jobs=-1, verbose=3)
 grid_search.fit(X_train, y_train)
 
 # 输出最佳参数

@@ -8,10 +8,13 @@ from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.metrics import precision_score, recall_score, accuracy_score
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
 
 # Start timing
 start_time = time.time()
-n = 5
+n = 30
 
 file_path = '../student_data_classified.csv'
 data = pd.read_csv(file_path, delimiter=',')
@@ -89,6 +92,15 @@ rec_val = recall_score(y_val, ypred_val, average='weighted')
 acc_test = accuracy_score(y_test, ypred_test)
 prec_test = precision_score(y_test, ypred_test, average='weighted')
 rec_test = recall_score(y_test, ypred_test, average='weighted')
+
+cm = confusion_matrix(y_test, ypred_test)
+print(cm)
+plt.figure(figsize=(10, 7))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrix')
+plt.show()
 
 # Print the best parameters and the best score
 end_time = time.time()
