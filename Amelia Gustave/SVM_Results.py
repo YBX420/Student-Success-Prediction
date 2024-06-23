@@ -7,8 +7,7 @@ from sklearn.metrics import precision_score, accuracy_score, recall_score
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Assuming you have your data loaded and split into X_train, X_test, X_val, y_train, y_test, y_val
-# Load your dataset
+# Load the dataset
 students = pd.read_csv('dataset.csv')
 
 # Define the mapping
@@ -24,7 +23,6 @@ students.drop('GDP', inplace = True, axis = 1)
 students.drop('Inflation rate', inplace = True, axis = 1)
 students.drop('Unemployment rate', inplace = True, axis = 1)
 
-# Assuming 'df' is your DataFrame and 'column_name' is the name of your column
 students['Target'] = pd.to_numeric(students['Target'], errors='coerce')
 
 # Assume the last column is the target variable and the rest are features
@@ -81,7 +79,6 @@ print("Validation set:")
 print(f"Accuracy: {val_accuracy:.2f}, Precision: {val_precision:.2f}, Recall: {val_recall:.2f}")
 
 from sklearn.metrics import confusion_matrix, classification_report
-
 
 # Calculate confusion matrix and classification report for training set
 train_cm = confusion_matrix(y_train, y_train_pred)
