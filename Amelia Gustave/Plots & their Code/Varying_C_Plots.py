@@ -6,7 +6,7 @@ from sklearn.metrics import precision_score, accuracy_score, recall_score
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Load your dataset
+# Load the dataset
 students = pd.read_csv('dataset.csv')
 
 # Define the mapping
@@ -20,7 +20,7 @@ students = students[students['Target'] != 2]
 
 students.drop(['GDP', 'Inflation rate', 'Unemployment rate'], inplace=True, axis=1)
 
-# Convert target to numeric (if necessary)
+# Convert target to numeric (for any possible Nan)
 students['Target'] = pd.to_numeric(students['Target'], errors='coerce')
 
 # Assume the last column is the target variable and the rest are features
