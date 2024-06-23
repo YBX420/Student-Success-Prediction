@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from xgboost import XGBClassifier
 import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
@@ -39,9 +40,9 @@ X_val = scaler.transform(X_val)
 X_test = scaler.transform(X_test)
 
 # 创建并训练随机森林模型
-best_para = {'max_depth' : 30, 'n_estimators' : 1000, 'random_state':0}
+best_para = {'colsample_bytree': 0.5, 'learning_rate': 0.01, 'max_depth': 10, 'n_estimators': 500, 'subsample': 1}
 
-best_model = RandomForestClassifier(**best_para)
+best_model = XGBClassifier(**best_para,eval_metric='mlogloss', random_state=42)
 best_model.fit(X_train, y_train)
 
 # 在测试集上进行预测

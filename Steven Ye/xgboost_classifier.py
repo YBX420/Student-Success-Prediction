@@ -58,8 +58,8 @@ print("Best parameters found:", grid_search.best_params_)
 print("Best cross-validation score:", grid_search.best_score_)
 
 
-params_best = {'colsample_bytree': 0.5, 'learning_rate': 0.01, 'max_depth': 10, 'n_estimators': 1000, 'subsample': 1}
-best_model = XGBClassifier(**params_best)
+#params_best = {'colsample_bytree': 0.5, 'learning_rate': 0.01, 'max_depth': 10, 'n_estimators': 1000, 'subsample': 1}
+best_model = XGBClassifier(**grid_search.best_params_,eval_metric='mlogloss', random_state=42)
 best_model.fit(X_train,y_train)
 
 ypred_train = best_model.predict(X_train)

@@ -129,3 +129,21 @@ Recall: 0.7629796839729119
 Total runtime of the script: 260.49141478538513 seconds
 Total runtime of the rfe: 223.54450678825378 seconds
 Total runtime of the train: 36.94690799713135 seconds
+
+
+
+Best parameters found: {'colsample_bytree': 0.5, 'learning_rate': 0.01, 'max_depth': 10, 'n_estimators': 500, 'subsample': 1}
+Best cross-validation score: 0.8205734543301164
+TRAIN
+Accuracy: 0.9861542808703023
+Precision: 0.9864693396840077
+Recall: 0.9861542808703023
+VALIDATION
+Accuracy: 0.832579185520362
+Precision: 0.830675987764262
+Recall: 0.832579185520362
+TEST
+Accuracy: 0.8171557562076749
+Precision: 0.8118267303674552
+Recall: 0.8171557562076749
+Total runtime of the script: 1629.6363542079926 seconds
