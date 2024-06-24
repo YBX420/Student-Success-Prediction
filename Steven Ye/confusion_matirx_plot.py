@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from xgboost import XGBClassifier
 import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
@@ -13,11 +12,11 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 import matplotlib.pyplot as plt
 
 
-# 加载示例数据集
+# add the dataset
 file_path = '../student_data_classified.csv'
 data = pd.read_csv(file_path, delimiter=',')
 
-# 确认数据列名
+# affirm the columns
 print("Available columns:", data.columns.tolist())
 
 # drop the three orignal data and remains the selected ones.
@@ -25,34 +24,35 @@ data = data.drop(columns=['GDP', 'Unemployment rate', 'Output','GDP_random'])
 X = data.drop(['GDP_class'], axis=1)
 y = data['GDP_class']
 
-# 将目标变量转换为数值标签
+# encode all the labels
 label_encoder = LabelEncoder()
 y = label_encoder.fit_transform(y)
 
-# 分割数据集
+# slipt the dataset
 X_train, X_test_val, y_train, y_test_val = train_test_split(X, y, test_size=0.2, shuffle=True, random_state=0)
 X_val, X_test, y_val, y_test = train_test_split(X_test_val, y_test_val, test_size=0.5, random_state=0)
 
-# 标准化数据
+# standardize
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_val = scaler.transform(X_val)
 X_test = scaler.transform(X_test)
 
 # 创建并训练随机森林模型
-best_para = {'colsample_bytree': 0.5, 'learning_rate': 0.01, 'max_depth': 10, 'n_estimators': 500, 'subsample': 1}
+best_para = {'max_depth': 30, 'min_impurity_decrease': 0.0, 'min_samples_split': 2, 'n_estimators': 1000}
 
-best_model = XGBClassifier(**best_para,eval_metric='mlogloss', random_state=42)
+best_model = RandomForestClassifier(**best_para)
 best_model.fit(X_train, y_train)
 
-# 在测试集上进行预测
+# predict it on the model
 y_pred = best_model.predict(X_test)
 
-# 生成混淆矩阵
+# change the cm
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
 n = 10
-# 使用seaborn绘制混淆矩阵
+
+# use the seaborn to plot the graph
 plt.figure(figsize=(10, 7))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
 plt.xlabel('Predicted')

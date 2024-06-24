@@ -1,11 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# 读取CSV文件
-file_path = 'different_rfe_result.csv'
+# read the csv file
+file_path = 'diff_result_pi.csv'
 df = pd.read_csv(file_path)
 
-# 检查数据
+# check the data
 print(df.head())
 
 def n_feature_time_rfe():
@@ -19,7 +19,7 @@ def n_feature_time_rfe():
     plt.show()
 
 def n_feature_time_train():
-    # 绘制time_rfe和n_feature的关系图
+    # plot the time_rfe and the n_feature
     plt.figure(figsize=(10, 6))
     plt.plot(df['N_feature'], df['Total train-time'], marker='o')
     plt.xlabel('Number of Features')
@@ -44,8 +44,6 @@ def n_feature_all_time():
     plt.plot(df['N_feature'], df['Total train-time'], marker='x', label='Train Time')
     plt.plot(df['N_feature'], df['Total runtime'], marker='s', label='Total Time')
 
-
-
     plt.xlabel('Number of Features')
     plt.ylabel('Time (seconds)')
     plt.title('RFE, Train, and Total Time vs. Number of Features')
@@ -57,20 +55,20 @@ def n_feature_total_train():
     n_feature = df['N_feature']
     runtime = df['Total runtime']
 
-    # 创建图形对象
+    # create the figure
     plt.figure(figsize=(10, 6))
 
-    # 绘制折线图
+    # plot the features
     plt.plot(n_feature, runtime, marker='o', label='Total runtime')
 
-    # 标记最大值和最小值
+    # label the maximum and minimum
     max_accuracy_index = runtime.idxmax()
     min_accuracy_index = runtime.idxmin()
 
     plt.plot(n_feature[max_accuracy_index], runtime[max_accuracy_index], 'rx', markersize = 24)  # 红色X标记最大值
     plt.plot(n_feature[min_accuracy_index], runtime[min_accuracy_index], 'gx', markersize = 24)  # 绿色X标记最小值
 
-    # 添加标签和标题
+    # add the label
     plt.xlabel('Number of Features')
     plt.ylabel('Run Time')
     plt.title('Run Time vs. Number of Features')
@@ -81,20 +79,20 @@ def n_feature_accuracy():
     n_feature = df['N_feature']
     test_accuracy = df['TEST Accuracy']
 
-    # 创建图形对象
+    # add the figures
     plt.figure(figsize=(10, 6))
 
-    # 绘制折线图
+    # plot the graph
     plt.plot(n_feature, test_accuracy, marker='o', label='Test Accuracy')
 
-    # 标记最大值和最小值
+    # label the max and min
     max_accuracy_index = test_accuracy.idxmax()
     min_accuracy_index = test_accuracy.idxmin()
 
     plt.plot(n_feature[max_accuracy_index], test_accuracy[max_accuracy_index], 'rx', markersize = 24)  # 红色X标记最大值
     plt.plot(n_feature[min_accuracy_index], test_accuracy[min_accuracy_index], 'gx', markersize = 24)  # 绿色X标记最小值
 
-    # 添加标签和标题
+    # add the labels
     plt.xlabel('Number of Features')
     plt.ylabel('Test Accuracy')
     plt.title('Test Accuracy vs. Number of Features')
@@ -137,9 +135,34 @@ def accuracy_time_total():
 
     plt.show()
 
+def performance_index():
+    n_feature = df['N_feature']
+    performance_index = df['Performance Index']
+
+    # add the figures
+    plt.figure(figsize=(10, 6))
+
+    # plot the graph
+    plt.plot(n_feature, performance_index, marker='o', label='Test Accuracy')
+
+    # label the max and min
+    max_accuracy_index = performance_index.idxmax()
+    min_accuracy_index = performance_index.idxmin()
+
+    plt.plot(n_feature[max_accuracy_index], performance_index[max_accuracy_index], 'rx', markersize = 24)  # 红色X标记最大值
+    plt.plot(n_feature[min_accuracy_index], performance_index[min_accuracy_index], 'gx', markersize = 24)  # 绿色X标记最小值
+
+    # add the labels
+    plt.xlabel('Number of Features')
+    plt.ylabel('Performance Index')
+    plt.title('Performance Index vs. Number of Features')
+    plt.grid(True)
+    plt.show()
 
 # n_feature_time_rfe()
 # n_feature_time_train()
-n_feature_total_train()
-n_feature_accuracy()
+#n_feature_all_time()
+#n_feature_total_train()
+#n_feature_accuracy()
+performance_index()
 #accuracy_time_total()
