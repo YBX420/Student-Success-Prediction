@@ -44,8 +44,8 @@ X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.2, random_
 X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.2, random_state=42)
 
 
-# Create an SVM classifier (Hypertuning - adjust parameters as needed)
-clf = svm.SVC(kernel='rbf', gamma = 0.001, C = 4)
+# Create an SVM classifier (Tuning - adjust parameters, according to plots and Hypertuning Code)
+clf = svm.SVC(kernel='linear', gamma = 0.001, C = 4)
 
 # Fit the model on training data
 clf.fit(X_train, y_train)
